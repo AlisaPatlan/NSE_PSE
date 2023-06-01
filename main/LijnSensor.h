@@ -1,0 +1,7 @@
+class LijnSensor{
+  public:
+
+  private:
+
+
+};
