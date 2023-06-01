@@ -31,14 +31,14 @@ void loop()
     Serial.println("bruin");
   }
 
-  if( (sensorValues[0] > 400 && sensorValues[0] < 600) &&   (sensorValues[2] > 400 && sensorValues[2] < 600))  {
+  else if( (sensorValues[0] > 400 && sensorValues[0] < 600) &&   (sensorValues[2] > 400 && sensorValues[2] < 600))  {
     Serial.println("grijs");
   }
 
-  if( (sensorValues[0] > 1000) &&   (sensorValues[2] > 1000 ))  {
+  else if( (sensorValues[0] > 1000) &&   (sensorValues[2] > 1000 ))  {
     Serial.println("zwart");
 
-  if( (sensorValues[0] > 200 && sensorValues[0] < 300 ) &&   (sensorValues[2] > 200 && sensorValues[2] < 300 ))  {
+  else if( (sensorValues[0] > 200 && sensorValues[0] < 300 ) &&   (sensorValues[2] > 200 && sensorValues[2] < 300 ))  {
     Serial.println("groen");
   }
 }
