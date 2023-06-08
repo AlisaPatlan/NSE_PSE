@@ -1,8 +1,0 @@
-class proxSensor{
-
-  public:
-
-  private:
-
-
-};
