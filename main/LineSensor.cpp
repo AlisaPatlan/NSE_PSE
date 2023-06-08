@@ -98,6 +98,5 @@ bool LineSensor::bruinBeideGezien(){
     return true;
   }
   return false;
-  
 }
   
