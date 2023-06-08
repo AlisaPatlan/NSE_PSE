@@ -4,16 +4,23 @@
 #include <Wire.h>
 #include <Zumo32U4.h>
 #include <Zumo32U4ProximitySensors.h>
-class proxSensor:public Sensors
+#include <MotorsControler.h>
+
+
+class proxSensor:
 {
   public:
   proxSensors();
   ~proxSensors();
-  int read();
-  int SensorStatus();
+  bool Obstakel();
+  
   
   private:
- bool detectedObstacle;
-  int statusProxSensor;
+  int rechterSensor;
+  int linkerSensor;
+  MotorsControler motorcont;
 
-};
+  
+
+
+}
