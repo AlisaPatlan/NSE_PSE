@@ -34,7 +34,7 @@ if ((sensorValues[0] > 600 && sensorValues[0] < 1000) && (sensorValues[2] > 600 
 
 void leesKleurWaarde(){
   lineSensors.read(lineSensorValues);
-  uint16_t LinkerSensorWaarde = lineSensorValues[0];
+  uint16_t linkerSensorWaarde = lineSensorValues[0];
   uint16_t rechterSensorWaarde = lineSensorValues[2];
 
   bool grijsLinksGezien = false; 

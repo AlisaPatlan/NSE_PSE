@@ -9,6 +9,7 @@ class LineSensor{
     lineSensor();
     void leesWaarde();
     void initSensor();
+    void leesKleurWaarde();
 
 
 private:
