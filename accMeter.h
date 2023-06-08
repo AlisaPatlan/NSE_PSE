@@ -1,5 +1,0 @@
-class accMeter{
-  public:
-
-  private:
-};
