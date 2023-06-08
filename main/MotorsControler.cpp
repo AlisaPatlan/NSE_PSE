@@ -29,11 +29,9 @@ void MotorsControler::startRijdenCirkel(int links, int rechts){
   motors.setSpeeds(links, rechts);
   toerenRechts = encoders.getCountsRight();
   toerenLinks = encoders.getCountsLeft();
-  if ((toerenRechts => 3100) && (toerenLinks => 3100)){
+  if ((toerenRechts = 3100) && (toerenLinks = 3100)){
     motors.setSpeeds(0,0);
   }
 
-  }
-
-
 }
+

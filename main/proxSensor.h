@@ -2,17 +2,16 @@
 #ifndef PROXSENSOR_H
 #define PROXSENSOR_H
 #include <Wire.h>
-#include <Zumo32U4.h>
-#include <Zumo32U4ProximitySensors.h>
-#include <MotorsControler.h>
+#include "Zumo32U4.h"
+#include "Zumo32U4ProximitySensors.h"
+#include "MotorsControler.h"
 
 
-class proxSensor:
-{
+class proxSensor{
   public:
-  proxSensors();
-  ~proxSensors();
+  proxSensor();
   bool Obstakel();
+  void InitSensors();
   
   
   private:
@@ -20,7 +19,6 @@ class proxSensor:
   int linkerSensor;
   MotorsControler motorcont;
 
-  
+};
 
-
-}
+#endif
