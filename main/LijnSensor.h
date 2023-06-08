@@ -6,15 +6,16 @@
 
 class LineSensor{
   public:
-  lineSensor();
-void leesWaarde();
-void initSensor();
+    lineSensor();
+    void leesWaarde();
+    void initSensor();
 
 
 private:
   Zumo32U4LineSensors lineSensors;
    MotorsControler motorControler ;
-
+    uint16_t rechterSensorWaarde;
+    uint16_t linkerSensorWaarde;
 
 
 

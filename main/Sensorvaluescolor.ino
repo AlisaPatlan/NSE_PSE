@@ -16,14 +16,14 @@ void setup()
 void loop()
 {
   lineSensors.read(lineSensorValues);
-  uint16_t leftSensorvalue = lineSensorValues[0];
+  uint16_t LinkerSensorWaarde = lineSensorValues[0];
 
 //statement om de linkersensor de grijze kleur te laten zien en dan vervolgens naar links te draaien 
 // zodra de linker of rechter sensor zwart opmerkt
 bool grijsLinksGezien = sensorValues[0] > 400 && sensorValues[0] < 600;
 if (grijsLinksGezien);
 {
- 
+  
   if (sensorValues[0] || sensorValues[2] > 1000){
 
   motors.setSpeeds(-150, 150);
@@ -35,7 +35,7 @@ if (grijsLinksGezien);
 
 
 lineSensors.read(lineSensorValues);
-  uint16_t rightSensorvalue = lineSensorValues[2];
+  uint16_t rechterSensorWaarde = lineSensorValues[2];
 
 //statement om de rechtersensor de grijze kleur te laten zien en dan vervolgens naar rechts te draaien 
 // zodra de linker of rechter sensor zwart opmerkt

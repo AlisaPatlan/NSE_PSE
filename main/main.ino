@@ -18,32 +18,10 @@ void setup()
 
 void loop()
 {
-  // Vooruit rijden
-  ZumoMotor.startRijden(100,100);
-  delay(2000);
-  
-  // Achteruit rijden
-  ZumoMotor.startRijden(-100,-100);
-  delay(2000);
-  
-  // Links draaien
-  ZumoMotor.startRijden(-100,100);
-  delay(1000);
-  
-  // Rechtsaf draaien
-  ZumoMotor.startRijden(100,-100);
-  delay(1000);
-  
-  // Stoppen
-  ZumoMotor.stopRijden();
-  delay(2000);
-
-
-
   //het duwen van het blokje
 
 
-uint16_t sensorValues[0]; //value left sensor
+  uint16_t sensorValues[0]; //value left sensor
   uint16_t sensorValues[2]; //value right sensor
   lineSensors.read(sensorValues);
   /* als de sensor bruine dwarsliggende lijn detecteert rijdt hij 20 cm naar voren
