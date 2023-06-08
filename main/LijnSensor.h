@@ -1,7 +1,21 @@
-class LijnSensor{
-  public:
+#ifndef LijnSensor_H
+#define LijnSensor_H
+#include <Wire.h>
+#include <Zumo32U4.h>
+#include "MotorsControler.h"
 
-  private:
+class LineSensor{
+  public:
+  lineSensor();
+void leesWaarde();
+void initSensor();
+
+
+private:
+  Zumo32U4LineSensors lineSensors;
+   MotorsControler motorControler ;
+
+
 
 
 };
