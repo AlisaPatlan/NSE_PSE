@@ -1,12 +1,12 @@
 #include "MotorsControler.h"
-#include "LijnSensor.h"
+#include "LineSensor.h"
 #include "accMeter.h"
 #include "xBee.h"
 #include "proxSensor.h"
 
 using namespace std;
 MotorsControler ZumoMotor;
-LijnSensor lijnenSensor;
+LineSensor LineSensors;
 accMeter acceleroMeter;
 xBee xBeeConnectie;
 proxSensor proxSensor;
@@ -23,15 +23,14 @@ void loop()
 
   uint16_t sensorValues[0]; //value left sensor
   uint16_t sensorValues[2]; //value right sensor
-  lineSensors.read(sensorValues);
+  LineSensors.read(sensorValues);
   /* als de sensor bruine dwarsliggende lijn detecteert rijdt hij 20 cm naar voren
       en doet 3 pogingen om het blokje te detecteren.
       ZUMO draait om zijn as en gebruikt proximity sensor.
       Als hij het blokje detecteert, rijdt hij naar voren op hoge snelheid.
       */
-  if ((sensorValues[0] > 600)&&(sensorValues[0]<1000)||(sensorValues[2] >600)&&(sensorValues[2] <1000)){
-    while (int toeren< 5000){// Beweeg 20 cm naar voren NOG EVEN METEN HOEVEEL TOEREN DAT IS!!
-      motors.setSpeeds(200, 200);
+  if (LineSensors.bruinBeideGezien){
+    motors.StartRijdenCirkel(200,200);
       }
   motors.setSpeeds(200,0);  
   proxSensors.Obstakel();

@@ -6,8 +6,11 @@ class MotorsControler{
     MotorsControler::MotorsControler();
     void startRijden(int,int);
     void stopRijden();
+    void startRijdenCirkel(int, int);
 
   private:
     int linkerSnelheid;
     int rechterSnelheid;
+    int toerenRechts;
+    int toerenLinks;
 };
