@@ -1,8 +1,9 @@
 #include "LineSensor.h"
+#include "Accelerometer.h"
 #include <Wire.h>
 #include <Zumo32U4.h>
 
-uint16_t sensorValues[10];
+uint16_t sensorValues[3];
 uint16_t lineSensorValues[3];
 
 Zumo32U4LineSensors lineSensors;
@@ -39,7 +40,7 @@ if ((sensorValues[0] > 600 && sensorValues[0] < 1000) && (sensorValues[2] > 600 
 
 void LineSensor::leesKleurWaarde(){
   uint16_t x;
-  lineSensors.read(lineSensorValues);
+  lineSensors.read(sensorValues);
   uint16_t linkerSensorWaarde = sensorValues[0];
   uint16_t rechterSensorWaarde = sensorValues[2];
 

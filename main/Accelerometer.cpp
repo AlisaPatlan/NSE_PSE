@@ -26,10 +26,12 @@ int Accelerometer::leesSensor() {
 //Als de waarde groter is dan 1000 dan staat de robot op een helling
  if (xWaarde > 1000) {
    Serial.println("Robot is on an incline");
-   return xWaarde;
+   
  } else {
    Serial.println("Robot is not on an incline");
+
  }
+  return xWaarde;
   Serial.print("X: "); Serial.print(xWaarde);
   Serial.print(" | Y: "); Serial.print(yWaarde);
  

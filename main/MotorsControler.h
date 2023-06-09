@@ -9,7 +9,7 @@ class MotorsControler{
     void startRijden(int,int);
     void stopRijden();
     void startRijdenCirkel(int, int);
-    void stopOpDeWipWap(int)
+    void stopOpDeWipWap(int);
 
   private:
     int linkerSnelheid;
