@@ -8,7 +8,7 @@ using namespace std;
 MotorsControler ZumoMotor;
 LineSensor LineSensors;
 Accelerometer accMeter;
-xBee xBeeConnectie;
+ZumoRobot zumo;
 proxSensor proxSensor;
 Zumo32U4ButtonA buttonA;
 Zumo32U4ButtonB buttonB;
@@ -58,29 +58,7 @@ void loop()
 
   }
   if(gedrukteKnop == "b"){
-    if (Serial1.available()){
-    char command = Serial1.read();
-    Serial1.write(command);
-     switch (command) {
-      case 'W': // Forward
-        ZumoMotor.startRijden(200, 200); // Adjust the motor speeds as needed
-        break;
-      
-      case 'S': // Backward
-        ZumoMotor.startRijden(-200, -200); // Adjust the motor speeds as needed
-        break;
-      
-      case 'A': // Turn left
-        ZumoMotor.startRijden(-200, 200); // Adjust the motor speeds as needed
-        break;
-      
-      case 'D': // Turn right
-        ZumoMotor.startRijden(200, -200); // Adjust the motor speeds as needed
-        break;
-      case 'X': // Stop
-        ZumoMotor.stopRijden();
-        break;
-    }
-  }
+    zumo.handleCommands();
   }
 }
+
