@@ -21,7 +21,7 @@ void loop()
   //het duwen van het blokje
 
 
-  uint16_t sensorValues[0]; //value left sensor
+  uint16_t sensorValues  [0]; //value left sensor
   uint16_t sensorValues[2]; //value right sensor
   LineSensors.read(sensorValues);
   /* als de sensor bruine dwarsliggende lijn detecteert rijdt hij 20 cm naar voren
