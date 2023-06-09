@@ -3,6 +3,7 @@
 #include <Wire.h>
 #include <Zumo32U4.h>
 #include "MotorsControler.h"
+#include "Accelerometer.h"
 
 class LineSensor{
   public:

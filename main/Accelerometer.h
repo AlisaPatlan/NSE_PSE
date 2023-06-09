@@ -2,6 +2,7 @@
 #define ACCELEROMETER_H
 
 #include "MotorsControler.h"
+#include "LineSensor.h"
 #include <Wire.h>
 #include <Zumo32U4.h>
 
@@ -10,6 +11,7 @@ public:
     Accelerometer();
     int leesSensor();
     void initSensor();
+    
     
 private:
   Zumo32U4IMU imu;

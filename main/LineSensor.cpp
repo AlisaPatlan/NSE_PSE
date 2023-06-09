@@ -39,7 +39,7 @@ if ((sensorValues[0] > 600 && sensorValues[0] < 1000) && (sensorValues[2] > 600 
 
 
 void LineSensor::leesKleurWaarde(){
-  uint16_t x;
+  uint16_t xWaarde = 0 ;
   lineSensors.read(sensorValues);
   uint16_t linkerSensorWaarde = sensorValues[0];
   uint16_t rechterSensorWaarde = sensorValues[2];
@@ -75,11 +75,11 @@ void LineSensor::leesKleurWaarde(){
   
   
   if(grijsLinksGezien && grijsLinksGezien){
-    if (x>0) 
+    if (xWaarde>0) 
       { 
-        motorControler.startRijden(0,0);
+        motorControler.stopRijden();
       }
-      else if (x < 0){
+      else if (xWaarde < 0){
         motorControler.startRijden(150, 150); 
         grijsLinksGezien = false; 
         grijsRechtsGezien = false;

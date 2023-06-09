@@ -51,6 +51,10 @@ void loop()
       else{
         ZumoMotor.startRijden(200,0);
       }
+     LineSensors.leesKleurWaarde();
+     LineSensors.bruinBeideGezien();
+     
+
   }
   if(gedrukteKnop == "b"){
     if (Serial1.available()){

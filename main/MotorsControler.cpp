@@ -1,4 +1,5 @@
 #include "MotorsControler.h"
+#include "Accelerometer.h"
 #include <Zumo32U4.h>
 
 
@@ -35,11 +36,7 @@ void MotorsControler::startRijdenCirkel(int links, int rechts){
 
 }
 
-void MotorsControler::stopOpDeWipWap(int xWaarde){
-while (xWaarde>0){
-  motors.setSpeeds(0,0);
-}
 
   
-    }
+ 
     
