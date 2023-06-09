@@ -15,7 +15,38 @@ LineSensor::LineSensor() {
 void LineSensor::initSensor(){
 
   lineSensors.initThreeSensors();
+  calibrateSensors();
 }
+
+void LineSensor::volgLijn() {
+
+
+  // put your main code here, to run repeatedly:
+  int16_t positie = lineSensors.readLine(lineSensorValues);
+  motorControler.startRijden(150, 150);
+}
+
+void LineSensor::calibrateSensors()
+{
+  // Wait 1 second and then begin automatic sensor calibration
+  // by rotating in place to sweep the sensors over the line
+  delay(1000);
+  for(uint16_t i = 0; i < 120; i++)
+  {
+    if (i > 30 && i <= 90)
+    {
+      motorControler.startRijden(-200, 200);
+    }
+    else
+    {
+      motorControler.startRijden(200, -200);
+    }
+
+    lineSensors.calibrate();
+  }
+  motorControler.startRijden(0, 0);
+}
+
 
 void LineSensor::leesWaarde() {
 //leest de linesensors af en geeft aan welke kleur het is (gekoppeld met waardes)
@@ -29,7 +60,7 @@ if ((sensorValues[0] > 600 && sensorValues[0] < 1000) && (sensorValues[2] > 600 
 
   else if ((sensorValues[0] > 1000) && (sensorValues[2] > 1000)) {
     Serial.println("zwart");
-    motorControler.startRijden(200,200);
+    
   }
 
     else if ((sensorValues[0] > 200 && sensorValues[0] < 300) && (sensorValues[2] > 200 && sensorValues[2] < 300)) {

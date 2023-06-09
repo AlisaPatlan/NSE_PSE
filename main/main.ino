@@ -20,6 +20,7 @@ bool knopGedrukt = false;
 void setup()
 {
   Serial.begin(9000);
+  LineSensors.calibrateSensors();
   do{
   if(buttonA.isPressed()){
     gedrukteKnop = "a";
