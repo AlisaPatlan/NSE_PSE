@@ -9,9 +9,8 @@
   imu.enableDefault();
   imu.configureForFaceUphill();
  }
-
-void Accelerometer::leesSensor() {
-  buttonA.waitForPress(); //Als er op button A wordt geklikt dan begint de sensor leeswaardes uit te geven
+int Accelerometer::leesSensor() {
+  //buttonA.waitForPress(); //Als er op button A wordt geklikt dan begint de sensor leeswaardes uit te geven
 
   imu.readAcc();
   int16_t xWaarde = imu.a.x;
@@ -27,6 +26,7 @@ void Accelerometer::leesSensor() {
 //Als de waarde groter is dan 1000 dan staat de robot op een helling
  if (xWaarde > 1000) {
    Serial.println("Robot is on an incline");
+   return xWaarde;
  } else {
    Serial.println("Robot is not on an incline");
  }

@@ -8,8 +8,9 @@
 class Accelerometer {
 public:
     Accelerometer();
-    void leesSensor();
+    int leesSensor();
     void initSensor();
+    
 private:
   Zumo32U4IMU imu;
   MotorsControler motorcont;

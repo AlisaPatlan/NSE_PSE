@@ -35,3 +35,12 @@ void MotorsControler::startRijdenCirkel(int links, int rechts){
 
 }
 
+void MotorsControler::stopOpDeWipWap(int xWaarde){
+while (xWaarde!>1000){
+  motor.setSpeeds(0,0)
+}
+
+  
+    }
+  }
+}

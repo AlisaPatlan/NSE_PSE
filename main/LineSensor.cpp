@@ -72,6 +72,7 @@ void LineSensor::leesKleurWaarde(){
     }
   }
   
+  
   if(grijsLinksGezien && grijsLinksGezien){
     if (x>0) 
       { 
