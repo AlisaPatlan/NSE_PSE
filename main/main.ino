@@ -30,7 +30,6 @@ void setup()
     knopGedrukt = true;
   }
   } while (!knopGedrukt);
-
 }
 
 void loop()
@@ -56,7 +55,7 @@ void loop()
     if (Serial1.available()){
     char command = Serial1.read();
     Serial1.write(command);
-     switch (command) {
+     switch (command){
       case 'W': // Forward
         ZumoMotor.startRijden(200, 200); // Adjust the motor speeds as needed
         break;

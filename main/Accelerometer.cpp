@@ -33,5 +33,4 @@ int Accelerometer::leesSensor() {
   Serial.print("X: "); Serial.print(xWaarde);
   Serial.print(" | Y: "); Serial.print(yWaarde);
  
-
 }
