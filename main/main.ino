@@ -41,13 +41,13 @@ void loop()
       if (bruinGezien){
         ZumoMotor.startRijdenCirkel(200,200);
       }
-      ZumoMotor.startRijden(200,0);  
-      bool obstakel = proxSensor.Obstakel();
-      if (obstakel == true) {
-        ZumoMotor.stopRijden();
-        delay(100);
-        ZumoMotor.startRijden(400,400);
-      }
+      // ZumoMotor.startRijden(200,0);  
+      // bool obstakel = proxSensor.Obstakel();
+      // if (obstakel == true) {
+      //   ZumoMotor.stopRijden();
+      //   delay(100);
+      //   ZumoMotor.startRijden(400,400);
+      // }
       else{
         ZumoMotor.startRijden(200,0);
       }

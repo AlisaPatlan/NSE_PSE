@@ -29,6 +29,7 @@ if ((sensorValues[0] > 600 && sensorValues[0] < 1000) && (sensorValues[2] > 600 
 
   else if ((sensorValues[0] > 1000) && (sensorValues[2] > 1000)) {
     Serial.println("zwart");
+    motorControler.startRijden(200,200);
   }
 
     else if ((sensorValues[0] > 200 && sensorValues[0] < 300) && (sensorValues[2] > 200 && sensorValues[2] < 300)) {
