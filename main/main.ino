@@ -38,6 +38,9 @@ void loop()
 {
   if(gedrukteKnop == "a"){
       LineSensors.leesWaarde();
+      LineSensors.volgLijn();
+      
+      LineSensors.leesKleurWaarde();
       bool bruinGezien = LineSensors.bruinBeideGezien();
       if (bruinGezien){
         ZumoMotor.startRijdenCirkel(200,200);
@@ -52,7 +55,7 @@ void loop()
       else{
         ZumoMotor.startRijden(200,0);
       }
-     LineSensors.leesKleurWaarde();
+     
      LineSensors.bruinBeideGezien();
      
 
