@@ -1,12 +1,15 @@
+#ifndef MOTORSCONTROLER_H
+#define MOTORSCONTROLER_H
 #include <Zumo32U4.h>
 
 class MotorsControler{
 
   public:
-    MotorsControler::MotorsControler();
+    MotorsControler();
     void startRijden(int,int);
     void stopRijden();
     void startRijdenCirkel(int, int);
+    void stopOpDeWipWap(int);
 
   private:
     int linkerSnelheid;
@@ -14,3 +17,7 @@ class MotorsControler{
     int toerenRechts;
     int toerenLinks;
 };
+
+
+
+#endif
