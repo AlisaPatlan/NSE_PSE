@@ -1,10 +1,14 @@
 #include "LineSensor.h"
 #include "Accelerometer.h"
 #include <Wire.h>
-#include <Zumo32U4.h>
+#include <Zumo32U4.h> 
+
+//unsigned int lineSensorValues[NUM_SENSORS];//toegevoegd door Alisa, misschien verwijderen
 
 uint16_t sensorValues[3];
 uint16_t lineSensorValues[3];
+int16_t lastError = 0;//toegevoegd door Alisa, misschien verwijderen
+uint16_t maxSpeed = 200;
 
 Zumo32U4LineSensors lineSensors;
 
@@ -22,12 +26,23 @@ void LineSensor::volgLijn() {
 
 
   // put your main code here, to run repeatedly:
-  int16_t positie = lineSensors.readLine(lineSensorValues);
+  int16_t position = lineSensors.readLine(lineSensorValues);
+  int16_t error = position - 2000;
+   int16_t speedDifference = error / 4 + 6 * (error - lastError);
+   lastError = error;
+   int16_t leftSpeed = (int16_t)maxSpeed + speedDifference;
+  int16_t rightSpeed = (int16_t)maxSpeed - speedDifference;
+   leftSpeed = constrain(leftSpeed, 0, (int16_t)maxSpeed);
+  rightSpeed = constrain(rightSpeed, 0, (int16_t)maxSpeed);
+
   motorControler.startRijden(150, 150);
 }
 
 void LineSensor::calibrateSensors()
 {
+  lineSensors.initThreeSensors(); 
+
+
   // Wait 1 second and then begin automatic sensor calibration
   // by rotating in place to sweep the sensors over the line
   delay(1000);
