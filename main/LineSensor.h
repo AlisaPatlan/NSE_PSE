@@ -1,6 +1,6 @@
 #ifndef LINESENSOR_H
 #define LINESENSOR_H
-#define NUM_SENSORS 3//toegevoegd door Alisa, misschien verwijderen
+#define NUM_SENSORS 5//toegevoegd door Alisa, misschien verwijderen
 #include <Wire.h>
 #include <Zumo32U4.h>
 #include "MotorsControler.h"
@@ -23,7 +23,7 @@ private:
     uint16_t rechterSensorWaarde;
     uint16_t linkerSensorWaarde;
     unsigned int lineSensorValues[NUM_SENSORS];
-    uint16_t sensorValues[3];
+    uint16_t sensorValues[5];
     int16_t lastError;
 
 

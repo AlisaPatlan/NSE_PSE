@@ -41,10 +41,10 @@ void loop()
       LineSensors.volgLijn();
       
       LineSensors.leesKleurWaarde();
-      bool bruinGezien = LineSensors.bruinBeideGezien();
-      if (bruinGezien){
-        ZumoMotor.startRijdenCirkel(200,200);
-      }
+      // bool bruinGezien = LineSensors.bruinBeideGezien();
+      // if (bruinGezien){
+      //   ZumoMotor.startRijdenCirkel(200,200);
+      // }
       // ZumoMotor.startRijden(200,0);  
       // bool obstakel = proxSensor.Obstakel();
       // if (obstakel == true) {
@@ -52,9 +52,9 @@ void loop()
       //   delay(100);
       //   ZumoMotor.startRijden(400,400);
       // }
-      else{
-        ZumoMotor.startRijden(200,0);
-      }
+      // else{
+      //   ZumoMotor.startRijden(200,0);
+      // }
      
      LineSensors.bruinBeideGezien();
      

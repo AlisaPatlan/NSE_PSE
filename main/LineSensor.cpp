@@ -5,9 +5,9 @@
 
 //unsigned int lineSensorValues[NUM_SENSORS];//toegevoegd door Alisa, misschien verwijderen
 
-uint16_t sensorValues[3];
-uint16_t lineSensorValues[3];
-int16_t lastError = 0;//toegevoegd door Alisa, misschien verwijderen
+uint16_t sensorValues[5];
+uint16_t lineSensorValues[5];
+int16_t lastError = 0; //toegevoegd door Alisa, misschien verwijderen
 uint16_t maxSpeed = 200;
 
 Zumo32U4LineSensors lineSensors;
@@ -18,7 +18,7 @@ LineSensor::LineSensor() {
 
 void LineSensor::initSensor(){
 
-  lineSensors.initThreeSensors();
+  lineSensors.initFiveSensors();
   calibrateSensors();
 }
 
@@ -40,7 +40,7 @@ void LineSensor::volgLijn() {
 
 void LineSensor::calibrateSensors()
 {
-  lineSensors.initThreeSensors(); 
+  lineSensors.initFiveSensors(); 
 
 
   // Wait 1 second and then begin automatic sensor calibration
@@ -73,8 +73,9 @@ if ((sensorValues[0] > 600 && sensorValues[0] < 1000) && (sensorValues[2] > 600 
     Serial.println("grijs");
   }
 
-  else if ((sensorValues[0] > 1000) && (sensorValues[2] > 1000)) {
+  else if ((sensorValues[1] > 1000)) {
     Serial.println("zwart");
+    motorControler.startRijden(200, 200);
     
   }
 
