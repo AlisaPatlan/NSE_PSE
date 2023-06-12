@@ -4,11 +4,11 @@ autonoom::autonoom(){
   Serial1.begin(9600);
 }
 
-Void autonoom::initSensor(){
+void autonoom::initSensor(){
 Wire.begin();
-  imu.init();
-  imu.enableDefault();
-  imu.configureForFaceUphill();
+imu.init();
+imu.enableDefault();
+imu.configureForFaceUphill();
 }
 
 

@@ -7,6 +7,9 @@
 #include "Accelerometer.h"
 #include "xBee.h"
 
+#include <Zumo32U4.h>
+
+
 class autonoom{
   public:
   autonoom();
@@ -34,4 +37,6 @@ class autonoom{
   Zumo32U4ButtonA buttonA;
   Zumo32U4ButtonB buttonB;
 
-}
+};
+
+#endif
