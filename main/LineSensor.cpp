@@ -8,7 +8,7 @@
 uint16_t sensorValues[5];
 uint16_t lineSensorValues[5];
 int16_t lastError = 0; //toegevoegd door Alisa, misschien verwijderen
-uint16_t maxSpeed = 200;
+uint16_t maxSpeed = 400;
 
 Zumo32U4LineSensors lineSensors;
 
@@ -28,7 +28,7 @@ void LineSensor::volgLijn() {
   // put your main code here, to run repeatedly:
   int16_t position = lineSensors.readLine(lineSensorValues);
   int16_t error = position - 2000;
-   int16_t speedDifference = error / 4 + 6 * (error - lastError);
+   int16_t speedDifference = error / 1 + 6 * (error - lastError);
    lastError = error;
    int16_t leftSpeed = (int16_t)maxSpeed + speedDifference;
   int16_t rightSpeed = (int16_t)maxSpeed - speedDifference;
