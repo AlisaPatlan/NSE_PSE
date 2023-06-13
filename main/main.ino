@@ -38,7 +38,12 @@ void loop()
 {
   if(gedrukteKnop == "a"){
       LineSensors.leesWaarde();
+      do{
       LineSensors.volgLijn();
+      }
+      while(LineSensors.leesWaarde()==5);
+
+      //LineSensors.volgLijn();
       
       LineSensors.leesKleurWaarde();
       // bool bruinGezien = LineSensors.bruinBeideGezien();

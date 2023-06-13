@@ -10,7 +10,7 @@
 class LineSensor{
   public:
     LineSensor();
-    void leesWaarde();
+    int leesWaarde();
     void initSensor();
     void leesKleurWaarde();
     bool bruinBeideGezien();
