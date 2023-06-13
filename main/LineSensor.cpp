@@ -8,7 +8,7 @@
 uint16_t sensorValues[5];
 uint16_t lineSensorValues[5];
 int16_t lastError = 0; //toegevoegd door Alisa, misschien verwijderen
-uint16_t maxSpeed = 400;
+uint16_t maxSpeed = 200;
 
 Zumo32U4LineSensors lineSensors;
 
@@ -26,21 +26,25 @@ void LineSensor::volgLijn() {
 
 
   // put your main code here, to run repeatedly:
-  int16_t position = lineSensors.readLine(lineSensorValues);
-  int16_t error = position - 2000;
-   int16_t speedDifference = error / 1 + 6 * (error - lastError);
-   lastError = error;
-   int16_t leftSpeed = (int16_t)maxSpeed + speedDifference;
+  // put your main code here, to run repeatedly:
+  int16_t positie = lineSensors.readLine(lineSensorValues);
+
+  int16_t error = positie - 2000;
+  int16_t speedDifference = error / 6 + 2 * (error - lastError);
+
+  lastError = error;
+
+  int16_t leftSpeed = (int16_t)maxSpeed + speedDifference;
   int16_t rightSpeed = (int16_t)maxSpeed - speedDifference;
-   leftSpeed = constrain(leftSpeed, 0, (int16_t)maxSpeed);
+
+  leftSpeed = constrain(leftSpeed, 0, (int16_t)maxSpeed);
   rightSpeed = constrain(rightSpeed, 0, (int16_t)maxSpeed);
 
-  motorControler.startRijden(150, 150);
+  motorControler.startRijden(leftSpeed, rightSpeed);
 }
 
 void LineSensor::calibrateSensors()
 {
-  lineSensors.initFiveSensors(); 
 
 
   // Wait 1 second and then begin automatic sensor calibration
@@ -65,30 +69,26 @@ void LineSensor::calibrateSensors()
 
 int LineSensor::leesWaarde() {
 //leest de linesensors af en geeft aan welke kleur het is (gekoppeld met waardes)
-if ((sensorValues[0] > 600 && sensorValues[0] < 1000) && (sensorValues[2] > 600 && sensorValues[2] < 1000)) {
+lineSensors.read(sensorValues);
+if ((sensorValues[0] > 500 && sensorValues[0] < 999) && (sensorValues[5] > 500 && sensorValues[5] < 999)) {
     Serial.println("bruin");
     return 1;
   }
-
-  else if ((sensorValues[0] > 400 && sensorValues[0] < 600) && (sensorValues[2] > 400 && sensorValues[2] < 600)) {
+  else if ((sensorValues[0] > 400 && sensorValues[0] < 499) && (sensorValues[2] > 400 && sensorValues[2] < 499)) {
     Serial.println("grijs");
     return 2;
   }
-
-  else if ((sensorValues[1] > 1000)) {
-    Serial.println("zwart");
-    motorControler.startRijden(200, 200);
-    return 5;
     
-  }
-
-    else if ((sensorValues[0] > 200 && sensorValues[0] < 300) && (sensorValues[2] > 200 && sensorValues[2] < 300)) {
+    else if ((sensorValues[0] > 300 && sensorValues[0] < 399) && (sensorValues[5] > 300 && sensorValues[5] < 399)) {
       Serial.println("groen");
       return 3;
-      motorControler.startRijden(100,100);
     }
+  else if ((sensorValues[3] > 1000)) {
+    Serial.println("zwart");
+    return 5;
   }
 
+}
 
 void LineSensor::leesKleurWaarde(){
   uint16_t xWaarde = 0 ;

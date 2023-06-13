@@ -19,8 +19,9 @@ bool knopGedrukt = false;
 
 void setup()
 {
-  Serial.begin(9000);
-  LineSensors.calibrateSensors();
+  Serial1.begin(9000);
+  LineSensors.initSensor();
+  //LineSensors.calibrateSensors();
   do{
   if(buttonA.isPressed()){
     gedrukteKnop = "a";
@@ -37,33 +38,7 @@ void setup()
 void loop()
 {
   if(gedrukteKnop == "a"){
-      LineSensors.leesWaarde();
-      do{
-      LineSensors.volgLijn();
-      }
-      while(LineSensors.leesWaarde()==5);
-
-      //LineSensors.volgLijn();
-      
-      LineSensors.leesKleurWaarde();
-      // bool bruinGezien = LineSensors.bruinBeideGezien();
-      // if (bruinGezien){
-      //   ZumoMotor.startRijdenCirkel(200,200);
-      // }
-      // ZumoMotor.startRijden(200,0);  
-      // bool obstakel = proxSensor.Obstakel();
-      // if (obstakel == true) {
-      //   ZumoMotor.stopRijden();
-      //   delay(100);
-      //   ZumoMotor.startRijden(400,400);
-      // }
-      // else{
-      //   ZumoMotor.startRijden(200,0);
-      // }
-     
-     LineSensors.bruinBeideGezien();
-     
-
+    LineSensors.volgLijn();
   }
   if(gedrukteKnop == "b"){
     zumo.handleCommands();
