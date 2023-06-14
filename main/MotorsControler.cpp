@@ -1,12 +1,10 @@
 #include "MotorsControler.h"
 #include "Accelerometer.h"
 #include <Zumo32U4.h>
-#include "LineSensor.h"
 
 
 Zumo32U4Motors motors;
 Zumo32U4Encoders encoders;
-LineSensor lineSensors;
 
 using namespace std;
 
@@ -35,14 +33,8 @@ void MotorsControler::startRijdenCirkel(int links, int rechts){
   if ((toerenRechts = 3100) && (toerenLinks = 3100)){
     motors.setSpeeds(0,0);
   }
-}
-  void MotorsControler::rijdOpGroen(){
 
-  while (lineSensors.leesWaarde()==3){
-    motors.setSpeeds(100,100);
-  }
 }
-
 
 
   
