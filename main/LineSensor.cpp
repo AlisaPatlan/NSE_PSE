@@ -106,11 +106,15 @@ if ((sensorValues[0] > 500 && sensorValues[0] < 999) && (sensorValues[5] > 500 &
 
 }
 
+
 /*void LineSensor::leesKleurWaarde(){
   uint16_t xWaarde = 0 ;
+=======
+void LineSensor::leesKleurWaarde(){
+>>>>>>> 0de0d2b93ba96f39df9f4b0136224b7813fdf2cb
   lineSensors.read(sensorValues);
   uint16_t linkerSensorWaarde = sensorValues[0];
-  uint16_t rechterSensorWaarde = sensorValues[2];
+  uint16_t rechterSensorWaarde = sensorValues[5];
 
   bool grijsLinksGezien = false; 
   bool grijsRechtsGezien = false;
@@ -128,7 +132,7 @@ if ((sensorValues[0] > 500 && sensorValues[0] < 999) && (sensorValues[5] > 500 &
       }
   }
 
-  if (sensorValues[2] > 400 && sensorValues[2] < 600)
+  if (sensorValues[5] > 400 && sensorValues[5] < 600)
   {
     grijsRechtsGezien = true;
   }
@@ -140,8 +144,15 @@ if ((sensorValues[0] > 500 && sensorValues[0] < 999) && (sensorValues[5] > 500 &
     grijsRechtsGezien = false;
     }
   }
-  
-  
+}
+  void LineSensor::Helling(){
+    uint16_t xWaarde = 0 ;
+  lineSensors.read(sensorValues);
+  uint16_t linkerSensorWaarde = sensorValues[0];
+  uint16_t rechterSensorWaarde = sensorValues[5];
+    bool grijsLinksGezien = false; 
+  bool grijsRechtsGezien = false;
+
   if(grijsLinksGezien && grijsLinksGezien){
     if (xWaarde>0) 
       { 

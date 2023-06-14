@@ -16,8 +16,12 @@ class LineSensor{
     bool bruinBeideGezien();
     void volgLijn();
     void calibrateSensors();
+
     void rijdOpGroen();
     
+
+    void Helling();
+
 
 private:
     Zumo32U4LineSensors lineSensors;
