@@ -24,6 +24,9 @@ void LineSensor::initSensor(){
 
 void LineSensor::volgLijn() {
 
+
+  // put your main code here, to run repeatedly:
+  // put your main code here, to run repeatedly:
   int16_t positie = lineSensors.readLine(lineSensorValues);
 
   int16_t error = positie - 2000;
@@ -63,25 +66,6 @@ void LineSensor::calibrateSensors()
   motorControler.startRijden(0, 0);
 }
 
-void LineSensor::rijdOpGroen(){
-  lineSensors.read(sensorValues);
-  if ((sensorValues[3] > 300) && (sensorValues[3] < 399)){
-  int16_t positie = lineSensors.readLine(sensorValues[3]);
-
-  int16_t error = positie - 2000;
-  int16_t speedDifference = error / 6 + 2 * (error - lastError);
-
-  lastError = error;
-
-  int16_t leftSpeed = (int16_t)(maxSpeed/2) + speedDifference;
-  int16_t rightSpeed = (int16_t)(maxSpeed/2) - speedDifference;
-
-  leftSpeed = constrain(leftSpeed, 0, (int16_t)(maxSpeed/2));
-  rightSpeed = constrain(rightSpeed, 0, (int16_t)(maxSpeed/2));
-
-  motorControler.startRijden(leftSpeed, rightSpeed);
-  }
-}
 
 int LineSensor::leesWaarde() {
 //leest de linesensors af en geeft aan welke kleur het is (gekoppeld met waardes)
@@ -106,12 +90,7 @@ if ((sensorValues[0] > 500 && sensorValues[0] < 999) && (sensorValues[5] > 500 &
 
 }
 
-
-/*void LineSensor::leesKleurWaarde(){
-  uint16_t xWaarde = 0 ;
-=======
 void LineSensor::leesKleurWaarde(){
->>>>>>> 0de0d2b93ba96f39df9f4b0136224b7813fdf2cb
   lineSensors.read(sensorValues);
   uint16_t linkerSensorWaarde = sensorValues[0];
   uint16_t rechterSensorWaarde = sensorValues[5];
@@ -167,7 +146,7 @@ void LineSensor::leesKleurWaarde(){
     motorControler.startRijden(150,150);
   }
   
-}*/
+}
 
 bool LineSensor::bruinBeideGezien(){
   lineSensors.read(lineSensorValues);
