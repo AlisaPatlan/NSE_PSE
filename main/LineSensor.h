@@ -18,7 +18,7 @@ class LineSensor{
     void calibrateSensors();
     void Helling();
     void rijdOpGroen();
-    void Helling();
+   // void Helling();
 
 private:
     Zumo32U4LineSensors lineSensors;

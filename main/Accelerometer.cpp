@@ -18,8 +18,8 @@ int Accelerometer::leesSensor() {
   int32_t magnitudeSquared = (int32_t)xWaarde * xWaarde + (int32_t)yWaarde * yWaarde;
 
 
-
- int32_t inclineThreshold = 1427 * 1427;
+int inclineThreshold = 0;
+ inclineThreshold = 1427 * 1427;
 
  bool onIncline = magnitudeSquared > inclineThreshold;
 

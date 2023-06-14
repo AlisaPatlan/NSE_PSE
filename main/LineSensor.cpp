@@ -25,12 +25,10 @@ void LineSensor::initSensor(){
 void LineSensor::volgLijn() {
 
 
-  // put your main code here, to run repeatedly:
-  // put your main code here, to run repeatedly:
   int16_t positie = lineSensors.readLine(lineSensorValues);
 
   int16_t error = positie - 2000;
-  int16_t speedDifference = error / 6 + 2 * (error - lastError);
+  int16_t speedDifference = error / 1 + 8 * (error - lastError);
 
   lastError = error;
 
@@ -90,15 +88,11 @@ if ((sensorValues[0] > 500 && sensorValues[0] < 999) && (sensorValues[5] > 500 &
 
 }
 
-<<<<<<< HEAD
-
-//void LineSensor::leesKleurWaarde(){
-/*void LineSensor::leesKleurWaarde(){
-  uint16_t xWaarde = 0 ;
->>>>>>> 14474ebacb15c4ae63c01386145093a1c2588460
-=======
+/*
 void LineSensor::leesKleurWaarde(){
->>>>>>> b93ededcc5c6cc3e2c98ea78a9bbbfe2a6199d03
+void LineSensor::leesKleurWaarde(){
+  uint16_t xWaarde = 0 ;
+void LineSensor::leesKleurWaarde(){
   lineSensors.read(sensorValues);
   uint16_t linkerSensorWaarde = sensorValues[0];
   uint16_t rechterSensorWaarde = sensorValues[5];
@@ -167,4 +161,6 @@ bool LineSensor::bruinBeideGezien(){
   }
   return false;
 }
+*/
+
   
