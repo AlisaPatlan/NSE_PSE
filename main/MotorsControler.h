@@ -9,6 +9,7 @@ class MotorsControler{
     void startRijden(int,int);
     void stopRijden();
     void startRijdenCirkel(int, int);
+    void rijdOpGroen();
     
 
   private:

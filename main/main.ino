@@ -20,7 +20,7 @@ bool knopGedrukt = false;
 void setup()
 {
   Serial1.begin(9000);
-  LineSensors.initSensor();
+  //LineSensors.initSensor();
   //LineSensors.calibrateSensors();
   do{
   if(buttonA.isPressed()){
@@ -39,6 +39,7 @@ void loop()
 {
   if(gedrukteKnop == "a"){
     LineSensors.volgLijn();
+    LineSensors.rijdOpGroen();
   }
   if(gedrukteKnop == "b"){
     zumo.handleCommands();
