@@ -7,24 +7,32 @@
 
 uint16_t sensorValues[5];
 uint16_t lineSensorValues[5];
-int16_t lastError = 0; //toegevoegd door Alisa, misschien verwijderen
-uint16_t maxSpeed = 200;
+int16_t lastError = 0;          //toegevoegd door Alisa, misschien verwijderen
+uint16_t maxSpeed = 400;
 
 Zumo32U4LineSensors lineSensors;
 
 LineSensor::LineSensor() {
-
+/*! Class LineSensor
+*initialisatie van de vijf sensoren van de front array van ZUMO32U4 en kalibratie daarvan. Deze methode maakt gebruik van de 
+*methodes die beneden worden beschreven
+*/
 }
 
 void LineSensor::initSensor(){
-
+  /*!initSensor initieert de vijf sensoren van de front array van ZUMO
+  */
   lineSensors.initFiveSensors();
   calibrateSensors();
 }
 
+
 void LineSensor::volgLijn() {
-
-
+/*!
+Met deze methode blijft ZUMO32U4 een lijn volgen. Het beste werkt met een zwarte lijn op witte achtergrond. 
+* Om lijn te volgen maakt ZUMO32U4 gebruik van methode readLine van Pololu library. 
+* ZUMO corrigeert de richting waar hij naartoe rijdt door steeds verschil tussen snelheden van rechter en linker motors aan te passen. 
+*/
   int16_t positie = lineSensors.readLine(lineSensorValues);
 
   int16_t error = positie - 2000;
@@ -43,10 +51,9 @@ void LineSensor::volgLijn() {
 
 void LineSensor::calibrateSensors()
 {
-
-
-  // Wait 1 second and then begin automatic sensor calibration
-  // by rotating in place to sweep the sensors over the line
+/*!1 seconde wachten en beginnen met kalibreren
+*  "swipen" over de vloer door op zijn as te roteren
+*/
   delay(1000);
   for(uint16_t i = 0; i < 120; i++)
   {
@@ -66,34 +73,52 @@ void LineSensor::calibrateSensors()
 
 
 int LineSensor::leesWaarde() {
-//leest de linesensors af en geeft aan welke kleur het is (gekoppeld met waardes)
+/*! Methode leesWaarde is nodig voornamelijk voor kalibreren voor hardcode. Wij hebben op het moment geen betere manier gevonden om kleuren aan waardes 
+* te koppelen bij de ZUMO. 
+*ZUMO herkent de waardes met zijn kleursensoren en geeft kleur aan via seriele uitvoer.
+*Om de waardes te kalibreren moet de gebruiker ZUMO met zijn array van sensoren op strepen van verschillende kleur zetten
+* en letten op de waardes die op de seriele uitvoer getoond worden. Er is een range aan waardes die bij een kleur gedetecteerd worden, er moeten de grenswaardes voor genomen worden.
+*/
 lineSensors.read(sensorValues);
-if ((sensorValues[0] > 500 && sensorValues[0] < 999) && (sensorValues[5] > 500 && sensorValues[5] < 999)) {
-    Serial.println("bruin");
+/*!Hiermee leest ZUMO bruin af. 
+*/
+
+if ((sensorValues[0] > 500 && sensorValues[0] < 999) && (sensorValues[4] > 500 && sensorValues[4] < 999)) {
+    Serial.println("bruin");                
     return 1;
   }
-  else if ((sensorValues[0] > 400 && sensorValues[0] < 499) && (sensorValues[2] > 400 && sensorValues[2] < 499)) {
+/*!Hiermee leest ZUMO grijs af. 
+*/
+  else if ((sensorValues[0] > 400 && sensorValues[0] < 499) && (sensorValues[4] > 400 && sensorValues[4] < 499)) {
     Serial.println("grijs");
     return 2;
+
   }
-    
-    else if ((sensorValues[0] > 300 && sensorValues[0] < 399) && (sensorValues[5] > 300 && sensorValues[5] < 399)) {
+/*!Hiermee leest ZUMO groen af. 
+*/    
+    else if ((sensorValues[0] > 300 && sensorValues[0] < 399) && (sensorValues[4] > 300 && sensorValues[4] < 399)) {
       Serial.println("groen");
       return 3;
     }
-  else if ((sensorValues[3] > 1000)) {
+/*!Hiermee leest ZUMO zwart af. 
+*/
+  else if ((sensorValues[5] > 1000)) {
     Serial.println("zwart");
     return 5;
   }
 
 }
 
-/*
+
 void LineSensor::leesKleurWaarde(){
-void LineSensor::leesKleurWaarde(){
-  uint16_t xWaarde = 0 ;
-void LineSensor::leesKleurWaarde(){
-  lineSensors.read(sensorValues);
+/*! Zumo leest kleur waardes door de juiste sensoren van de array te gebruiken. Dan worden de variabelen can status veranderd (false -> true)
+*
+*
+*/
+
+  uint16_t xWaarde = 0 ; //waarde van de helling
+
+  lineSensors.read(sensorValues); //aflezen van de waardes door de lijnsensor
   uint16_t linkerSensorWaarde = sensorValues[0];
   uint16_t rechterSensorWaarde = sensorValues[5];
 
@@ -126,6 +151,7 @@ void LineSensor::leesKleurWaarde(){
     }
   }
 }
+
   void LineSensor::Helling(){
     uint16_t xWaarde = 0 ;
   lineSensors.read(sensorValues);
@@ -153,14 +179,14 @@ void LineSensor::leesKleurWaarde(){
 bool LineSensor::bruinBeideGezien(){
   lineSensors.read(lineSensorValues);
   uint16_t linkerSensorWaarde = sensorValues[0];
-  uint16_t rechterSensorWaarde = sensorValues[2];
+  uint16_t rechterSensorWaarde = sensorValues[4];
 
-  if (((sensorValues[0] > 600) && (sensorValues[0] < 1000))&&((sensorValues[0] > 600) && (sensorValues[0] < 1000)))
+  if (((linkerSensorWaarde > 500) && (linkerSensorWaarde < 999))&&((rechterSensorWaarde > 500) && (rechterSensorWaarde < 999)))
   {
     return true;
   }
   return false;
 }
-*/
+
 
   

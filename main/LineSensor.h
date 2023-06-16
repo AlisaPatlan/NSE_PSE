@@ -6,10 +6,13 @@
 #include "MotorsControler.h"
 #include "Accelerometer.h"
 
+/*! Header-file van de LineSensor bevat alle attributten en methodes van class LineSensor. 
+* De methodes worden in de LineSensor.cpp file geïmplementeerd. Deze class maakt gebruik van de standart library van Pololu.
+*/
 
 class LineSensor{
   public:
-    LineSensor();
+    LineSensor();             
     int leesWaarde();
     void initSensor();
     void leesKleurWaarde();

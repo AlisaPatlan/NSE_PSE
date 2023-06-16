@@ -6,6 +6,9 @@
 #include <Wire.h>
 #include <Zumo32U4.h>
 
+/*! Header-file van de Accelerometer bevat alle attributten en methodes van class Accelerimeter. 
+* De methodes worden in de Accelerometer.cpp file geïmplementeerd. Deze class maakt gebruik van de standart library van Pololu.
+*/
 class Accelerometer {
 public:
     Accelerometer();
